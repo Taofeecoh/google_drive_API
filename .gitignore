@@ -1,0 +1,13 @@
+*env
+terraform-dev/*terraform*
+*cache*
+logs
+plugins
+config
+*.jpg
+*.ipynb
+*csv
+*var*
+*json
+*.yaml
+*.parquet

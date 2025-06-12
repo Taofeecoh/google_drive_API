@@ -1,16 +1,17 @@
-import pandas as pd
-import os
-import gspread
-import boto3
-import awswrangler as wr 
 import os
 import time
+
+import awswrangler as wr
+import boto3
+import gspread
+import pandas as pd
 from airflow.models import Variable
-from utils import remove_trailing_space, replace_with_underscore, first_letters_to_cap
 
+from utils import (first_letters_to_cap, remove_trailing_space,
+                   replace_with_underscore)
 
-gspread_auth_path='/opt/airflow/'
-temp_storage_path='/opt/airflow/tmp/'
+gspread_auth_path = '/opt/airflow/'
+temp_storage_path = '/opt/airflow/tmp/'
 
 
 def gspread_conn():
@@ -18,16 +19,19 @@ def gspread_conn():
     Function to connect to google drive API and extract data from target source
     :returns: success message when ingestion is complete
     """
-    filename=f"{gspread_auth_path}gspread-api-462623-c3c3b4126b29.json"
+    filename = f"{gspread_auth_path}gspread-api-462623-c3c3b4126b29.json"
     client = gspread.service_account(filename=filename)
     spreadsheet = client.open("marketing_source")
     worksheet = spreadsheet.sheet1
     rows = worksheet.get_all_values()
     biodata = pd.DataFrame(rows[1:], columns=rows[0])
     os.makedirs(temp_storage_path, exist_ok=True)
-    biodata.to_csv(temp_storage_path+"googlesheet-biodata.csv", index=False, index_label=False)
+    biodata.to_csv(
+        temp_storage_path+"googlesheet-biodata.csv",
+        index=False,
+        index_label=False
+        )
     print("data ingested successfully!")
-
 
 
 def transform_col_names():
@@ -43,7 +47,11 @@ def transform_col_names():
         i = first_letters_to_cap(i)
         new_col.append(i)
     df.columns = new_col
-    df.to_csv(temp_storage_path+"googlesheet-biodata.csv", index=False, index_label=False)
+    df.to_csv(
+        temp_storage_path+"googlesheet-biodata.csv",
+        index=False,
+        index_label=False
+        )
     print("Column names updated successfully!")
 
 
@@ -71,9 +79,12 @@ def to_s3():
     data = pd.DataFrame(data)
     wr.s3.to_csv(
         df=data,
-        path=f"{my_path}googlesheet-biodata-{time.strftime("%Y-%m-%d-%H-%M-%S")}.csv",
+        path=(
+            f"{my_path}googlesheet-biodata-{time.strftime(
+                "%Y-%m-%d-%H-%M-%S"
+                )}.csv"
+            ),
         boto3_session=boto_session(),
         dataset=False
     )
     print("upload complete!")
-

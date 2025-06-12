@@ -1,8 +1,9 @@
 from datetime import datetime, timedelta
 
-from airflow.models import DAG, Variable
+from airflow.models import DAG
 from airflow.operators.python_operator import PythonOperator
-from app import gspread_conn, transform_col_names, to_s3
+
+from app import gspread_conn, to_s3, transform_col_names
 
 args = {
     'owner': 'Taofeecoh',

@@ -1,12 +1,11 @@
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 import pendulum
-
+from airflow.dags.tmp_storage_app import (gspread_conn, to_s3,
+                                          transform_col_names)
 from airflow.models import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.utils import timezone
-
-from airflow.dags.tmp_storage_app import gspread_conn, to_s3, transform_col_names
 
 now = timezone.utcnow()
 a_date = timezone.datetime(2025, 6, 8)
@@ -39,7 +38,7 @@ with DAG(
 
     load_to_s3 = PythonOperator(
         task_id="load_to_s3",
-        python_callable=to_s3, 
+        python_callable=to_s3,
     )
 
 connect_to_driveAPI >> transform_data >> load_to_s3

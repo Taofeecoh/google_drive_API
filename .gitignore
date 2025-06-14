@@ -11,3 +11,4 @@ config
 *json
 *.yaml
 *.parquet
+tmp_*

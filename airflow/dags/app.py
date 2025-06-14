@@ -81,7 +81,7 @@ def to_s3():
         df=data,
         path=(
             f"{my_path}googlesheet-biodata-{time.strftime(
-                "%Y-%m-%d-%H-%M-%S"
+                "%Y-%m-%d|%H:%M:%S"
                 )}.csv"
             ),
         boto3_session=boto_session(),

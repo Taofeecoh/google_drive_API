@@ -11,13 +11,15 @@ A functional lightweight ETL pipeline that connects to Google Drive API, extract
 * ⏰ Tasks to run daily, fully automated by Airflow.
 * 🔄 Tasks communicate with each other via Airflow XCom
 
-## 📌 Tech Stack used: 
+## 📌 Tech Stack: 
 Python | Apache Airflow | Boto3 | Google Drive API | Boto3
 
 ## 📁 Project Structure
 
 
 # IMAGE WORKFLOW IMAGE
+
+## ⚙️ Installation
 
 
 

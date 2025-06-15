@@ -22,7 +22,7 @@ A functional lightweight ETL pipeline that connects to Google Drive API, extract
 
 ## 📁 Project Structure
 
-# IMAGE WORKFLOW IMAGE
+![alt text](images/image-2.png)
 
 ## ⚙️ How to setup this project
 1. Clone this repository to your local machine

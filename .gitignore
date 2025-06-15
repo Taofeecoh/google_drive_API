@@ -9,7 +9,6 @@ config
 *csv
 *var*
 *json
-*.yaml
 *.parquet
 tmp_*
 *png

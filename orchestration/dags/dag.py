@@ -19,7 +19,7 @@ args = {
 
 
 with DAG(
-    dag_id='googlesheets_xcom_dag',
+    dag_id='googlesheets_xcom',
     default_args=args,
     schedule_interval='0 17 * * *',
     catchup=False

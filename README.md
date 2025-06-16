@@ -81,10 +81,10 @@ A functional lightweight ETL pipeline that connects to Google Drive API, extract
     docker compose up -d
     ```
 
-10. Create `airflow` variables: 
+10. Log into Airflow UI at `localhost:8080` and create `airflow` variables : 
     * `AWS_KEY_ID`
     * `AWS_SECRET_KEY`
-    *
+    * `CREDENTIALS`
 
 ## 🤝 Contributions
 Contributions are welcome! Please fork the repository and submit a pull request with your enhancements.

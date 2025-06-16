@@ -1,15 +1,19 @@
-# 🌐 Google Drive ETL with Apache Airflow
-
-A functional lightweight ETL pipeline that connects to Google Drive API, extracts data from a freqeuntly updated spreadsheet, applies layers of transformations methods and loads the data into Aamzon S3 bucket. This project is orchestrated with Airflow for daily automation.
+# 🌐 Google Drive ETL Pipeline with Apache Airflow
 
 ## Contents
-* [Features](#features)
+* [Problem](#-the-problem)
+* [Solution/Features](#-the-solution)
 * [Structure](#-project-structure)
 * [Setup](#️-how-to-setup-this-project)
 * [Contributions](#-contributions)
 
+## 🔍 The Problem
+The marketing team manually updates a Google Sheet with important data every day. However, this data is siloed in Drive and not easily accessible to the ML and analytics teams. Manual handling introduces risks like inconsistency, delays, and human error — all of which slow down data-driven decision-making.
 
-## Features
+## ✅ The Solution
+This project automates the data pipeline using Apache Airflow.
+
+### Features
 * 🔐 A `python` script that connects to google drive API leveraging `gspread` library
 * 📊 Scans for target spreadsheet's existence, opens and extract data from target sheet.
 * 📊 Formats extracted data as `pandas` dataframe
@@ -19,6 +23,8 @@ A functional lightweight ETL pipeline that connects to Google Drive API, extract
 * 🔄 Tasks communicate with each other via Airflow XCom
 
 **📌 Tech Stack:  Python3.12 | Apache Airflow | Docker | Boto3 | Google Drive API | Boto3**
+
+A functional lightweight ETL pipeline that connects to Google Drive API, extracts data from a freqeuntly updated spreadsheet, applies layers of transformations methods and loads the data into Aamzon S3 bucket. This project is orchestrated with Airflow for daily automation.
 
 ## 📁 Project Structure
 
@@ -81,10 +87,12 @@ A functional lightweight ETL pipeline that connects to Google Drive API, extract
     docker compose up -d
     ```
 
-10. Log into Airflow UI at `localhost:8080` and create `airflow` variables : 
+10. Log into Airflow UI at `localhost:8080` and define `airflow` variables : 
     * `AWS_KEY_ID`
     * `AWS_SECRET_KEY`
     * `CREDENTIALS`
+
+11. Trigger `dag` on `Airflow UI` and confirm object storage in destination: `AWS s3`.
 
 ## 🤝 Contributions
 Contributions are welcome! Please fork the repository and submit a pull request with your enhancements.

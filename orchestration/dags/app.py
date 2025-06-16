@@ -18,8 +18,9 @@ def gspread_conn():
     Function to connect to google drive API and extract data from target source
     :returns: success message when ingestion is complete
     """
-    filename = f"{gspread_auth_path}gspread-api-462623-c3c3b4126b29.json"
-    client = gspread.service_account(filename=filename)
+    #filename = f"{gspread_auth_path}gspread-api-462623-c3c3b4126b29.json"
+    client = gspread.service_account(filename=Variable.get("CREDENTIALS")) 
+    # client = gspread.service_account(filename=filename)
     spreadsheet = client.open("marketing_source")
     worksheet = spreadsheet.sheet1
     rows = worksheet.get_all_values()

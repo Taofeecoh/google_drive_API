@@ -20,11 +20,12 @@ To address this, I built an automated ETL pipeline that bridges the gap between 
 * 🧹 Dataframe columns are further extracted and formated as `snake_case`
 * ☁️ Loads transformed dataframe to Amazon s3 bucket via `awswrangler`
 * ⏰ Tasks to run daily, fully automated by Airflow.
-* 🔄 Tasks communicate with each other via Airflow XCom
+* 📅 Timestamps: Each ingestion run stores a uniquely timestamped copy of the data, enabling version control, historical tracking, and easy integration with time-based analytics.
+    ![alt text](images/image-1.png)
+
 
 **📌 Tech Stack:  Python3.12 | Apache Airflow | Docker | Boto3 | Google Drive API | Boto3**
 
-A functional lightweight ETL pipeline that connects to Google Drive API, extracts data from a freqeuntly updated spreadsheet, applies layers of transformations methods and loads the data into Aamzon S3 bucket. This project is orchestrated with Airflow for daily automation.
 
 ## 📁 Project Structure
 
@@ -101,4 +102,3 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 ## Known Issue
 
 ![alt text](images/image.png)
-![alt text](images/image-1.png)

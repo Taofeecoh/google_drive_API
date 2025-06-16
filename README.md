@@ -1,17 +1,17 @@
 # 🌐 Google Drive ETL Pipeline with Apache Airflow
 
 ## Contents
-* [Problem](#-the-problem)
+* [Business Use Case](#-business-use-case)
 * [Solution/Features](#-the-solution)
 * [Structure](#-project-structure)
 * [Setup](#️-how-to-setup-this-project)
 * [Contributions](#-contributions)
 
-## 🔍 The Problem
+## 🔍 Business Use Case
 The marketing team manually updates a Google Sheet with important data every day. However, this data is siloed in Drive and not easily accessible to the ML and analytics teams. Manual handling introduces risks like inconsistency, delays, and human error — all of which slow down data-driven decision-making.
 
 ## ✅ The Solution
-This project automates the data pipeline using Apache Airflow.
+To address this, I built an automated ETL pipeline that bridges the gap between manual spreadsheet entry and cloud-based data platforms.
 
 ### Features
 * 🔐 A `python` script that connects to google drive API leveraging `gspread` library

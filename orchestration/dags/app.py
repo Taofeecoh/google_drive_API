@@ -17,6 +17,7 @@ def gspread_conn():
     Function to connect to google drive API and extract data from target source
     :returns: success message when ingestion is complete
     """
+
     #filename = f"{gspread_auth_path}gspread-api-462623-c3c3b4126b29.json"
     client = gspread.service_account(filename=Variable.get("CREDENTIALS")) 
     # client = gspread.service_account(filename=filename)
@@ -35,18 +36,11 @@ def transform_col_names(ti):
     :returns: list of items in snake_case
     """
     data_frame = ti.xcom_pull(task_ids='connect_to_driveAPI')
-    new_col = []
     data_list = data_frame.columns.to_list()
-
-    for i in data_list:
-        i = remove_trailing_space(i)
-        i = replace_with_underscore(i)
-        i = first_letters_to_cap(i)
-        new_col.append(i)
-    data_frame.columns = new_col
+    col = [col.strip().replace(" ", "_").lower() for col in data_list]
+    data_frame.columns = col
     print("Column names updated successfully!")
     return data_frame
-
 
 def boto_session():
     """

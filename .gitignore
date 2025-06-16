@@ -11,4 +11,3 @@ config
 *json
 *.parquet
 tmp_*
-*png

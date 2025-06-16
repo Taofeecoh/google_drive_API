@@ -97,8 +97,3 @@ To address this, I built an automated ETL pipeline that bridges the gap between 
 
 ## 🤝 Contributions
 Contributions are welcome! Please fork the repository and submit a pull request with your enhancements.
-
-
-## Known Issue
-
-![alt text](images/image.png)

@@ -9,7 +9,6 @@ from airflow.models import Variable
 from utils import (first_letters_to_cap, remove_trailing_space,
                    replace_with_underscore)
 
-gspread_auth_path = '/opt/airflow/'
 temp_storage_path = '/opt/airflow/tmp/'
 
 

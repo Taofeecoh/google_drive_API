@@ -3,9 +3,9 @@ import time
 import awswrangler as wr
 import boto3
 import gspread
-from gspread.exceptions import APIError
 import pandas as pd
 from airflow.models import Variable
+from gspread.exceptions import APIError
 
 temp_storage_path = '/opt/airflow/tmp/'
 
@@ -16,8 +16,10 @@ def gspread_conn():
     :returns: success message when ingestion is complete
     """
 
-    #filename = f"{gspread_auth_path}gspread-api-462623-c3c3b4126b29.json"
-    client = gspread.service_account(filename=Variable.get("CREDENTIALS", deserialize_json=True)) 
+    # filename = f"{gspread_auth_path}gspread-api-462623-c3c3b4126b29.json"
+    client = gspread.service_account(
+        filename=Variable.get("CREDENTIALS", deserialize_json=True)
+        )
     # client = gspread.service_account(filename=filename)
     try:
         spreadsheet = client.open("marketing_source")
@@ -35,8 +37,8 @@ def gspread_conn():
 
 def transform_col_names(ti):
     """
-    Function to transform list items to snake case format
-    :param data_list: takes a list (required)
+    Function to transform list items to snake_case format
+    :params ti: x_com parameter to pull data
     :returns: list of items in snake_case
     """
     data_frame = ti.xcom_pull(task_ids='connect_to_driveAPI')
@@ -45,6 +47,7 @@ def transform_col_names(ti):
     data_frame.columns = col
     print("Column names updated successfully!")
     return data_frame
+
 
 def boto_session():
     """

@@ -22,15 +22,20 @@ def gspread_conn():
         )
     # client = gspread.service_account(filename=filename)
     try:
-        spreadsheet = client.open("marketing_source")
-        worksheet = spreadsheet.sheet1
-        data = worksheet.get_all_values()
-        if data:
-            biodata = pd.DataFrame(data[1:], columns=data[0])
+        spreadsheet = client.open("marketing-source")
+        if spreadsheet:
+            worksheet = spreadsheet.sheet1
+            data = worksheet.get_all_values()
+            if data:
+                biodata = pd.DataFrame(data[1:], columns=data[0])
+            else:
+                print("data not found!")
         else:
-            print("data not found!")
+            print("worksheet does not exist!")
     except APIError as e:
         print(e)
+    except Exception as e:
+        print(f"An error occurred: {e}")
     print("data ingested successfully!")
     return biodata
 

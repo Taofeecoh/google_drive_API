@@ -3,10 +3,10 @@ def replace_with_underscore(x: str):
     """
     Function to strip and replace whitespaces between words with _score
     :param x: a string (required)
-    :returns: formatted string with underscore(s)
+    :returns: formatted string with underscore(s) in lowercase
     """
     x = x.strip()
-    return x.replace(" ", "_")
+    return x.replace(" ", "_").lower()
 
 
 def to_snakecase(data_list: list):
@@ -15,5 +15,5 @@ def to_snakecase(data_list: list):
     :param data_list: takes a list (required)
     :returns: list of items in snake_case
     """
-    col = [replace_with_underscore(i.lower()) for i in data_list]
+    col = [replace_with_underscore(i) for i in data_list]
     return col

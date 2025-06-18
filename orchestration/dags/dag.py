@@ -6,9 +6,11 @@ from airflow.operators.python_operator import PythonOperator
 from airflow.utils import timezone
 
 from app import gspread_conn, to_s3, transform_col_names
+import airflow_variable
 
 now = timezone.utcnow()
 a_date = timezone.datetime(2025, 6, 8)
+airflow_vars = airflow_variable
 
 args = {
     'owner': 'Taofeecoh',

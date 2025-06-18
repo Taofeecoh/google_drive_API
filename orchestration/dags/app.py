@@ -5,6 +5,7 @@ import boto3
 import gspread
 import pandas as pd
 from airflow.models import Variable
+from utils import to_snakecase
 
 
 def gspread_conn():
@@ -41,7 +42,7 @@ def transform_col_names(ti):
     """
     data_frame = ti.xcom_pull(task_ids='connect_to_driveAPI')
     data_list = data_frame.columns.to_list()
-    col = [col.strip().replace(" ", "_").lower() for col in data_list]
+    col = to_snakecase(data_list=data_list)
     data_frame.columns = col
     print("Column names updated successfully!")
     return data_frame

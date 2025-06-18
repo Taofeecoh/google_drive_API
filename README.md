@@ -91,7 +91,7 @@ To address this, I built an automated ETL pipeline that bridges the gap between 
 10. Log into Airflow UI at `localhost:8080` and define `airflow` variables : 
     * `AWS_KEY_ID`
     * `AWS_SECRET_KEY`
-    * `CREDENTIALS`
+    * `CREDENTIALS_AIRFLOW_GSERVICE`
 
 11. Trigger `dag` on `Airflow UI` and confirm object storage in destination: `AWS s3`.
 

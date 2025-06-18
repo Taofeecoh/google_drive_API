@@ -22,7 +22,7 @@ def gspread_conn():
             worksheet = spreadsheet.sheet1
             data = worksheet.get_all_records()
             if data:
-                biodata = pd.DataFrame(data)
+                marketing_data = pd.DataFrame(data)
             else:
                 print("data not found!")
         else:
@@ -30,13 +30,13 @@ def gspread_conn():
     except Exception as e:
         print(f"An error occurred: {e}")
     print("data ingested successfully!")
-    return biodata
+    return marketing_data
 
 
 def transform_col_names(ti):
     """
     Function to transform list items to snake_case format
-    :params ti: x_com parameter to pull data
+    :params ti: airflow task instance to pull data from
     :returns: list of items in snake_case
     """
     data_frame = ti.xcom_pull(task_ids='connect_to_driveAPI')
@@ -71,7 +71,7 @@ def to_s3(ti):
     wr.s3.to_csv(
         df=data_frame,
         path=(
-            f"{my_path}googlesheet-xcombiodata-{time.strftime(
+            f"{my_path}marketing-googlesheet-data-{time.strftime(
                 "%Y-%m-%d|%H:%M:%S"
                 )}.csv"
             ),

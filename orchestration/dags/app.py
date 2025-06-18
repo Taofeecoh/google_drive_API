@@ -5,9 +5,6 @@ import boto3
 import gspread
 import pandas as pd
 from airflow.models import Variable
-from gspread.exceptions import APIError
-
-temp_storage_path = '/opt/airflow/tmp/'
 
 
 def gspread_conn():
@@ -16,24 +13,20 @@ def gspread_conn():
     :returns: success message when ingestion is complete
     """
 
-    # filename = f"{gspread_auth_path}gspread-api-462623-c3c3b4126b29.json"
-    client = gspread.service_account(
-        filename=Variable.get("CREDENTIALS", deserialize_json=True)
-        )
-    # client = gspread.service_account(filename=filename)
+    client = gspread.service_account_from_dict(
+        Variable.get("CREDENTIALS_AIRFLOW_GSERVICE", deserialize_json=True)
+    )
     try:
-        spreadsheet = client.open("marketing-source")
+        spreadsheet = client.open("marketing_source")
         if spreadsheet:
             worksheet = spreadsheet.sheet1
-            data = worksheet.get_all_values()
+            data = worksheet.get_all_records()
             if data:
-                biodata = pd.DataFrame(data[1:], columns=data[0])
+                biodata = pd.DataFrame(data)
             else:
                 print("data not found!")
         else:
             print("worksheet does not exist!")
-    except APIError as e:
-        print(e)
     except Exception as e:
         print(f"An error occurred: {e}")
     print("data ingested successfully!")

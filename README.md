@@ -23,7 +23,6 @@ To address this, I built an automated ETL pipeline that bridges the gap between 
 * 📅 Timestamps: Each ingestion run stores a uniquely timestamped copy of the data, enabling version control, historical tracking, and easy integration with time-based analytics.
     ![alt text](images/image-1.png)
 
-
 **📌 Tech Stack:  Python3.12 | Apache Airflow | Docker | Boto3 | Google Drive API | Boto3**
 
 

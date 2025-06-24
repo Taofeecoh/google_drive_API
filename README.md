@@ -21,14 +21,14 @@ To address this, I built an automated ETL pipeline that bridges the gap between 
 * ☁️ Loads transformed dataframe to Amazon s3 bucket via `awswrangler`
 * ⏰ Tasks to run daily, fully automated by Airflow.
 * 📅 Timestamps: Each ingestion run stores a uniquely timestamped copy of the data, enabling version control, historical tracking, and easy integration with time-based analytics.
-    ![alt text](images/image-1.png)
+    ![alt text](assets/image-1.png)
 
 **📌 Tech Stack:  Python3.12 | Apache Airflow | Docker | Boto3 | Google Drive API | Boto3**
 
 
 ## 📁 Project Structure
 
-![alt text](images/image-2.png)
+![alt text](assets/image-2.png)
 
 ## ⚙️ How to setup this project
 1. Prerequisite: 

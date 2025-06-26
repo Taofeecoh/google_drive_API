@@ -28,7 +28,7 @@ To address this, I built an automated ETL pipeline that bridges the gap between 
 
 ## 📁 Project Structure
 
-![alt text](assets/image-2.png)
+![alt text](assets/gsheet.drawio.png)
 
 ## ⚙️ How to setup this project
 1. Prerequisite: 

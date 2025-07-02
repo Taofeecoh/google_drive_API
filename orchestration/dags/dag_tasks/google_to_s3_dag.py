@@ -7,7 +7,7 @@ from airflow.models import DAG, Variable
 from airflow.operators.python import PythonOperator
 from airflow.utils import timezone
 
-from orchestration.dags.dag_tasks import airflow_variable
+from dag_tasks import airflow_variable
 from utils.app import googlesheet_to_s3
 
 now = timezone.utcnow()
